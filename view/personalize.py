@@ -4,7 +4,6 @@ import numpy as np
 import pandas as pd
 import time
 from flask import Flask, Blueprint, app, jsonify, json
-from view.api import get_load_list
 
 
 #personalize 구현 부분
@@ -31,7 +30,7 @@ print("ITEM: {}".format(item_title))
 
 get_recommendations_response = personalize_runtime.get_recommendations(
     campaignArn = campaign_arn,
-    userId = str(get_userid),
+    userId = str(user_id),
     itemId = str(item_id)
 )
 
