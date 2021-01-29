@@ -20,6 +20,6 @@ user, item 데이터는 내가 필요한대로 정제가 안되어 있어 미리
 ### u.data, u.item
 정제하기전 raw 데이터
 
-#requirements.txt
+# requirements.txt
 > pip install -r requirements.txt
 프로젝트 패키지 모두 다운 가능
