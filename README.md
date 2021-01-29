@@ -1,7 +1,7 @@
 # AWS_Personalize_example
 epicmobile aws personalize project
 
-./data/
+## ./data/
 ### CrateSolutionCampagin.ipyb
 AWS python sdk 사용하여 데이터 셋 만들기부터 솔루션 만들기까지
 
