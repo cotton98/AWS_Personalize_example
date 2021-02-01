@@ -50,26 +50,23 @@ for item in item_list :
 print("Recommendations: {}".format(json.dumps(title_list, indent=2)))
 
 #route받아 userid받고 post방식일때 추천리스트 반환
-@api.route('/list/<userid>', methods=['GET', 'POST'])
+@api.route('/list/<userid>', methods=['GET'])
 def get_load_list(userid):
     if userid > '943' :
         return 'No user in service'
-        
-    if request.method == 'GET':
-        return jsonify({'user_id': 1, 'recommend_list' : title_list})
 
-    elif request.method == 'POST' :
-        get_recommendations_response = personalize_runtime.get_recommendations(
-            campaignArn = campaign_arn,
-            userId = str(userid),
-            itemId = str(item_id)
-        )
 
-        user_item_list = get_recommendations_response['itemList']
-        user_title_list = []
+    get_recommendations_response = personalize_runtime.get_recommendations(
+        campaignArn = campaign_arn,
+        userId = str(userid),
+        itemId = str(item_id)
+    )
 
-        for item in user_item_list :
-            title = get_movie_title(item['itemId'])
-            user_title_list.append(title)
+    user_item_list = get_recommendations_response['itemList']
+    user_title_list = []
 
-        return jsonify({'user_id': userid, 'recommend_list' : user_title_list})
+    for item in user_item_list :
+        title = get_movie_title(item['itemId'])
+        user_title_list.append(title)
+
+    return jsonify({'user_id': userid, 'recommend_list' : user_title_list})
