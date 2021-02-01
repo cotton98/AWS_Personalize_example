@@ -1,5 +1,8 @@
 from flask import Flask, jsonify, request, Blueprint, json
-from app.view import api
+import os, sys
+#sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.insert(0, './app/view')
+import api
 
 app = Flask(__name__)
 
