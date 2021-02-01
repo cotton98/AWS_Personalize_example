@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request, Blueprint, json
-from view import api
+from app.view import api
 
 app = Flask(__name__)
 
