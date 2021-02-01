@@ -49,12 +49,10 @@ for item in item_list :
 
 print("Recommendations: {}".format(json.dumps(title_list, indent=2)))
 
-#route받아 userid받고 post방식일때 추천리스트 반환
 @api.route('/list/<userid>', methods=['GET'])
 def get_load_list(userid):
     if userid > '943' :
         return 'No user in service'
-
 
     get_recommendations_response = personalize_runtime.get_recommendations(
         campaignArn = campaign_arn,
