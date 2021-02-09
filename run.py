@@ -1,7 +1,4 @@
 import sys, flask
-
-# from flask import Flask
-
 sys.path.insert(0, "./app/view")
 import api
 
