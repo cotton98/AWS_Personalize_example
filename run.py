@@ -6,7 +6,6 @@ app = flask.Flask(__name__)
 
 app.register_blueprint(api.api, url_prefix="/recommend")
 
-# 기본 url
 @app.route("/")
 def hello_world():
     my_res = flask.Response("Hello world!")
