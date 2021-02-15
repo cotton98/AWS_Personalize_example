@@ -2,7 +2,6 @@ from flask import Blueprint, jsonify, json
 import boto3
 import pandas as pd
 
-
 api = Blueprint("api", __name__)
 
 personalize = boto3.client("personalize")

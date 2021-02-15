@@ -1,8 +1,11 @@
 import sys, flask
+from flask import Flask
+from flask_cors import CORS
 sys.path.insert(0, "./app/view")
 import api
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
+cors = CORS(app)
 
 app.register_blueprint(api.api, url_prefix="/recommend")
 
