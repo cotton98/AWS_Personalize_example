@@ -50,8 +50,8 @@ print("Recommendations: {}".format(json.dumps(title_list, indent=2)))
 
 @api.route("/list/<userid>", methods=["GET"])
 def get_load_list(userid):
-    if int(userid) > 943:
-        return "No user in service"
+    #if int(userid) > 943:
+    #    return "No user in service"
 
     get_recommendations_response = personalize_runtime.get_recommendations(
         campaignArn=campaign_arn, userId=str(userid), itemId=str(item_id)
