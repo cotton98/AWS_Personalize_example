@@ -1,0 +1,73 @@
+<!--@layout(/layout/basic/layout.html)-->
+<!--메인 사진, 이미지는 ftp접속해서 업로드, 이미지 경로는 ftp로 업로드하면 올라가는 경로-->
+<!--edibot_skin_data:{"width":1014,"mo_width":640}-->
+<div class="visual">  
+        <div>
+            <a href="http://epicmobile.kr/"><img src="/web/upload/image/toystory3.jpg" width = "1000" /></a>
+        </div>
+</div>
+
+<!DOCTYPE html>
+<html>
+    <!--@css(/css/recommend.css)-->
+	<head>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <!--구글 폰트 쓰기위한 url-->
+		<link rel="preconnect" href="https://fonts.gstatic.com">
+		<link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Noto+Sans+KR:wght@100;400;500;700;900&display=swap" rel="stylesheet">
+	</head>
+    
+    <body>
+        <h1>당신을 위한 영화추천</h1>
+        <div id="inputboad">
+        <h3> id를 입력하세요 </h3>
+        <label>ID: <input type="text" id="input" onkeyup="print()">
+        <button onclick="upload()">Go!!</button>
+        <div id="returnid"></div>
+        </div>
+        <br>
+        <div id = "img">
+            <img id="img1" src="" width="240" height="320">
+            <img id="img2" src="" width="240" height="320">
+            <img id="img3" src="" width="240" height="320">
+            <img id="img4" src="" width="240" height="320">
+        </div>
+        <script type="text/javascript">
+            var userid;
+            
+            function print(){
+                userid = document.getElementById("input").value;
+                document.getElementById("returnid").innerHTML = "YourID : " + userid;
+                //사용자가 0이하나 943 이상일때 No Service 창이 뜨며 새창으로 재업로드
+                if(userid > 943 || userid < 1){
+                    alert("No Service");
+                    window.open('https://epicmobile181.cafe24.com/', "_self");
+                    }
+            }
+            
+            function imgurl(value) {
+                var url = "";
+                $.ajax({
+                    type: "GET",
+                    url: "http://3.223.136.225:5000/recommend/list/" + userid, //ec2 시작하면 생성되는 ip를 적어줘야 추천리스트 반환함
+                    async: false,
+                    success:function(data){
+                        var list = new Array(); 
+                        list = data.recommend_itemidlist;
+                        url = "./web/product/big/" + list[value] + ".jpg";//모든 포스터 저장된 경로
+                    }
+                })
+                return url;
+            }
+            
+            function upload() {
+                document.getElementById('img1').src=imgurl(0)
+                document.getElementById('img2').src=imgurl(1)
+                document.getElementById('img3').src=imgurl(2)
+                document.getElementById('img4').src=imgurl(3)
+            }
+        </script>
+	</body>
+</html>
+
+<!--@define(cmc_log)-->

@@ -24,3 +24,11 @@ personalize용 사용자 데이터
 > pip install -r requirements.txt
 
 프로젝트 패키지 모두 다운 가능
+
+## cafe24 폴더
+# cafe24.html
+cafe24 쇼핑몰에서 보이는 html 파일
+cafe24 스마트 디자인 수정에서만 적용가능
+
+# cafe24.css
+cafe24.html의 태그들을 꾸미는 파일
